@@ -37,6 +37,7 @@ const Nav = props => (
           <NavItem
             name={item}
             selected={props.page}
+            key={item}
           />
         );
       })}

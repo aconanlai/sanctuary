@@ -1,13 +1,69 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
 import './Map.css';
 
-const Map = () => (
-  <div id="map">
-    <h1>Map</h1>
-    <p>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    </p>
-  </div>
-);
+import { googleApiKey } from '../../../config';
 
-export default Map;
+class MapComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
+    };
+    this.onMapClicked = this.onMapClicked.bind(this);
+    this.onMarkerClick = this.onMarkerClick.bind(this);
+  }
+
+  onMarkerClick(props, marker, e) {
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true,
+    });
+  }
+
+  onMapClicked(props) {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null,
+      });
+    }
+  }
+
+  render() {
+    return (
+      <div id="map">
+        <Map
+          google={this.props.google}
+          style={{ width: '90%', height: '70%', position: 'relative' }}
+          className={'map'}
+          zoom={16}
+          initialCenter={{ lat: Number(this.props.lat), lng: Number(this.props.lng), }}
+        >
+          <Marker
+            name={'Machina'}
+            position={{ lat: Number(this.props.lat), lng: Number(this.props.lng), }}
+            onClick={this.onMarkerClick}
+          />
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}>
+            <div>
+              <h1>{this.state.selectedPlace.name}</h1>
+              <p>5455 Ave de Gaspé<br />
+                Montréal
+              </p>
+            </div>
+          </InfoWindow>
+        </Map>
+      </div>
+    );
+  }
+}
+
+export default GoogleApiWrapper({
+  apiKey: googleApiKey,
+})(MapComponent);
