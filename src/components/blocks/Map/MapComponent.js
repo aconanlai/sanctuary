@@ -1,13 +1,12 @@
 /* eslint quote-props: 0 */
 /* eslint comma-dangle: 0 */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
 import './Map.css';
+import YouAreHere from './youarehere.png';
 
-import { googleApiKey } from '../../../config';
-
-class MapComponent extends Component {
+class MapComponent extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,14 +36,16 @@ class MapComponent extends Component {
   }
 
   render() {
+    const { google } = this.props;
     return (
-      <div id='map'>
+      <div id="map">
         <Map
           google={this.props.google}
           style={{ width: '100%', height: '100%', position: 'relative' }}
           className={'map'}
           zoom={16}
-          initialCenter={{ lat: 45.527514, lng: -73.596334, }}
+          initialCenter={{ lat: 45.521681, lng: -73.574336, }}
+          center={google ? new google.maps.LatLng(this.props.lat, this.props.lng) : null}
           styles={[
             {
               'featureType': 'water',
@@ -222,10 +223,19 @@ class MapComponent extends Component {
             }
           ]}
         >
-          <Marker
-            name={'Machina'}
-            position={{ lat: Number(this.props.lat), lng: Number(this.props.lng), }}
+          {/*<Marker
+            name={'First Park'}
+            position={{ lat: this.props.lat, lng: this.props.lng, }}
             onClick={this.onMarkerClick}
+          />*/}
+          <Marker
+            name={'Your position'}
+            position={{ lat: this.props.lat, lng: this.props.lng, }}
+            icon={{
+              url: YouAreHere,
+              anchor: google ? new google.maps.Point(16, 16) : null,
+              scaledSize: google ? new google.maps.Size(32, 32) : null
+            }}
           />
           <InfoWindow
             marker={this.state.activeMarker}

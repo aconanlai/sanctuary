@@ -2,9 +2,11 @@ import React from 'react';
 import MapComponent from './MapComponent';
 import './Map.css';
 
-const Map = () => (
+const Map = props => (
   <div id="map">
-    <MapComponent />
+    <MapComponent
+      {...props}
+    />
   </div>
 );
 

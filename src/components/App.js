@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from './Nav/Nav';
 import Block from './blocks/Block';
+import MapBlock from './blocks/Map/MapBlock';
 import Home from './blocks/Home/Home';
 import About from './blocks/About/About';
 import Map from './blocks/Map/Map';
@@ -23,11 +24,11 @@ const App = () => (
     >
       <About />
     </Block>
-    <Block
+    <MapBlock
       page="map"
     >
       <Map />
-    </Block>
+    </MapBlock>
     <Block
       page="stories"
     >
