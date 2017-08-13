@@ -1,0 +1,17 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.navList {
+  list-style: none;
+  font-size: 0.75em;
+  padding-left: 0.5em;
+  padding-top: 0.5em;
+}
+
+.navList > li {
+  text-transform: uppercase;
+}
