@@ -1,5 +1,6 @@
 /* eslint quote-props: 0 */
 /* eslint comma-dangle: 0 */
+/* eslint no-unused-expressions: 0 */
 
 import React, { PureComponent } from 'react';
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
@@ -13,9 +14,30 @@ class MapComponent extends PureComponent {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
+      initialFoundLat: 45.521681,
+      initialFoundLng: -73.574336,
     };
     this.onMapClicked = this.onMapClicked.bind(this);
     this.onMarkerClick = this.onMarkerClick.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      (prevProps.foundLocation !== this.props.foundLocation) &&
+      (this.props.foundLocation === true)
+    ) {
+      this.setState({
+        initialFoundLat: this.props.lat,
+        initialFoundLng: this.props.lng,
+      }, () => {
+        setTimeout(() => {
+          this.setState({
+            initialFoundLat: 999,
+            initialFoundLng: 999,
+          });
+        }, 1000);
+      });
+    }
   }
 
   onMarkerClick(props, marker, e) {
@@ -45,7 +67,7 @@ class MapComponent extends PureComponent {
           className={'map'}
           zoom={16}
           initialCenter={{ lat: 45.521681, lng: -73.574336, }}
-          center={google ? new google.maps.LatLng(this.props.lat, this.props.lng) : null}
+          centerAroundCurrentLocation
           styles={[
             {
               'featureType': 'water',
