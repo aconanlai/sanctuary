@@ -12,6 +12,10 @@
   padding-top: 0.5em;
 }
 
-.navList > li {
+.navItem {
   text-transform: uppercase;
+}
+
+.navItem.selected {
+  color: red;
 }

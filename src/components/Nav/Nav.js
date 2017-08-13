@@ -1,17 +1,36 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './Nav.css';
 
-const Nav = () => (
+const items = ['home', 'about', 'map', 'stories', 'artist', 'credits'];
+
+const NavItem = props => (
+  <li
+    className={(props.selected === props.name) ? 'navItem selected' : 'navItem'}
+  >
+    {props.name}
+  </li>
+);
+
+const Nav = props => (
   <div className="nav">
     <ul className="navList">
-      <li>Home</li>
-      <li>About</li>
-      <li>Map</li>
-      <li>Stories</li>
-      <li>Artist</li>
-      <li>Credits</li>
+      {items.map(item => {
+        return (
+          <NavItem
+            name={item}
+            selected={props.page}
+          />
+        );
+      })}
     </ul>
   </div>
 );
 
-export default Nav;
+const mapStateToProps = (state) => {
+  return {
+    page: state._routing.page,
+  };
+};
+
+export default connect(mapStateToProps, {})(Nav);
