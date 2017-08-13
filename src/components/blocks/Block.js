@@ -1,9 +1,16 @@
 import React from 'react';
+import Waypoint from 'react-waypoint';
 import './Block.css';
 
 const Block = props => (
   <div className="block">
-    {props.children}
+    <Waypoint
+      onEnter={() => { console.log(`entering ${props.page}`); }}
+    >
+      <div className="innerBlock">
+        {props.children}
+      </div>
+    </Waypoint>
   </div>
 );
 

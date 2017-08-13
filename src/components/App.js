@@ -13,22 +13,34 @@ import './App.css';
 const App = () => (
   <div>
     <Nav />
-    <Block>
+    <Block
+      page="home"
+    >
       <Home />
     </Block>
-    <Block>
+    <Block
+      page="about"
+    >
       <About />
     </Block>
-    <Block>
+    <Block
+      page="map"
+    >
       <Map />
     </Block>
-    <Block>
+    <Block
+      page="stories"
+    >
       <Stories />
     </Block>
-    <Block>
+    <Block
+      page="artist"
+    >
       <Artist />
     </Block>
-    <Block>
+    <Block
+      page="credits"
+    >
       <Credits />
     </Block>
   </div>
