@@ -1,14 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import scrollIntoView from 'scroll-into-view';
 import './Nav.css';
 
 const items = ['home', 'about', 'map', 'stories', 'artist', 'credits'];
+
+const handleClick = page => {
+  const element = document.getElementById(page);
+  scrollIntoView(element, {
+    time: 500,
+  });
+};
 
 const NavItem = props => (
   <li
     className={(props.selected === props.name) ? 'navItem selected' : 'navItem'}
   >
-    {props.name}
+    <a
+      onClick={(e) => {
+        e.preventDefault();
+        handleClick(props.name);
+      }}
+      role="link"
+      tabIndex={0}
+    >
+      {props.name}
+    </a>
   </li>
 );
 

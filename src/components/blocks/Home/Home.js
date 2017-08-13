@@ -3,7 +3,7 @@ import Header from './Header/Header';
 import './Home.css';
 
 const Home = () => (
-  <div className="home">
+  <div id="home">
     <Header />
   </div>
 );
