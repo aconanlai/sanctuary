@@ -3,9 +3,12 @@
 /* eslint no-unused-expressions: 0 */
 
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
 import './Map.css';
 import YouAreHere from './youarehere.png';
+
+import { changeVideo } from '../../../redux/modules/video';
 
 class MapComponent extends PureComponent {
   constructor(props) {
@@ -245,11 +248,11 @@ class MapComponent extends PureComponent {
             }
           ]}
         >
-          {/*<Marker
+          <Marker
             name={'First Park'}
-            position={{ lat: this.props.lat, lng: this.props.lng, }}
-            onClick={this.onMarkerClick}
-          />*/}
+            position={{ lat: 45.549036, lng: -73.616488, }}
+            onClick={() => { this.props.changeVideo('hua'); }}
+          />
           <Marker
             name={'Your position'}
             position={{ lat: this.props.lat, lng: this.props.lng, }}
@@ -276,8 +279,14 @@ class MapComponent extends PureComponent {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    video: state._video.video,
+  };
+};
+
 // key appears in bundle anyways, ¯\_(ツ)_/¯
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyC1_tz3QGGKPq6iinGN4h-FqPrLOhTlgVI',
-})(MapComponent);
+})(connect(mapStateToProps, { changeVideo })(MapComponent));

@@ -8,6 +8,7 @@ import Map from './blocks/Map/Map';
 import Stories from './blocks/Stories/Stories';
 import Artist from './blocks/Artist/Artist';
 import Credits from './blocks/Credits/Credits';
+import Video from './Video/Video';
 
 import './App.css';
 
@@ -44,6 +45,7 @@ const App = () => (
     >
       <Credits />
     </Block>
+    <Video />
   </div>
 );
 
