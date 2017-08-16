@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import Waypoint from 'react-waypoint';
 import '../Block.css';
 
@@ -20,7 +21,9 @@ class Block extends Component {
   }
 
   handleEnter() {
+    const langpath = (this.props.language === 'en') ? '/' : '/fr/';
     this.props.changePage(this.props.page);
+    this.props.router.push(`${langpath}${this.props.page}`);
     setInterval(this.findLocation, 2000);
   }
 
@@ -65,4 +68,10 @@ class Block extends Component {
   }
 }
 
-export default connect(null, { changePage, })(Block);
+const mapStateToProps = state => {
+  return {
+    language: state._language.language,
+  };
+};
+
+export default connect(mapStateToProps, { changePage, })(withRouter(Block));
