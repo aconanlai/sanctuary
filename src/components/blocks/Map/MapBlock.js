@@ -4,6 +4,9 @@ import { withRouter } from 'react-router';
 import Waypoint from 'react-waypoint';
 import '../Block.css';
 
+import data from '../../../places.json';
+
+import { changeVideo } from '../../../redux/modules/video';
 import { changePage } from '../../../redux/modules/routing';
 
 class Block extends Component {
@@ -14,10 +17,24 @@ class Block extends Component {
       lng: -73.574336,
       error: null,
     };
+    this.checkBounds = this.checkBounds.bind(this);
     this.handleEnter = this.handleEnter.bind(this);
     this.findLocation = this.findLocation.bind(this);
     this.errorLocation = this.errorLocation.bind(this);
     this.successLocation = this.successLocation.bind(this);
+  }
+
+  checkBounds(lat, lng) {
+    Object.keys(data).forEach(place => {
+      if (
+        (lat < Number(data[place].bounds.north)) &&
+        (lat > Number(data[place].bounds.south)) &&
+        (lng > Number(data[place].bounds.east)) &&
+        (lng < Number(data[place].bounds.west))
+      ) {
+        this.props.changeVideo(data[place].video);
+      }
+    });
   }
 
   handleEnter() {
@@ -44,10 +61,12 @@ class Block extends Component {
   }
 
   successLocation(position) {
+    const { latitude, longitude, } = position.coords;
     this.setState({
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
+      lat: latitude,
+      lng: longitude,
     });
+    this.checkBounds(latitude, longitude);
   }
 
   render() {
@@ -74,4 +93,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { changePage, })(withRouter(Block));
+export default connect(mapStateToProps, { changePage, changeVideo, })(withRouter(Block));

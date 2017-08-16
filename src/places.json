@@ -1,0 +1,32 @@
+{
+  "parcNormanville": {
+    "name": "Parc Normanville",
+    "centre" : {
+      "lat": "45.545699",
+      "lng": "-73.615863"
+    },
+    "bounds": {
+      "north": "45.546137",
+      "south": "45.545415",
+      "west": "-73.616332",
+      "east": "-73.615249)"
+    },
+    "video": "https://www.youtube.com/watch?v=97oN_DfkJoY",
+    "lastVisited": "1502186400"
+  },
+  "parcPetitItalie": {
+    "name": "Parc Petit Italie",
+    "centre" : {
+      "lat": "45.531383",
+      "lng": "-73.611963"
+    },
+    "bounds": {
+      "north": "45.531687",
+      "south": "45.531112",
+      "west": "-73.612371",
+      "east": "-73.611636)"
+    },
+    "video": "https://www.youtube.com/watch?v=84pg8HOPTFk",
+    "lastVisited": "1502186400"
+  }
+}

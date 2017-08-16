@@ -6,6 +6,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
 import './Map.css';
+import data from '../../../places.json';
 import YouAreHere from './youarehere.png';
 
 import { changeVideo } from '../../../redux/modules/video';
@@ -22,6 +23,7 @@ class MapComponent extends PureComponent {
     };
     this.onMapClicked = this.onMapClicked.bind(this);
     this.onMarkerClick = this.onMarkerClick.bind(this);
+    this.renderMarkers = this.renderMarkers.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -58,6 +60,19 @@ class MapComponent extends PureComponent {
         activeMarker: null,
       });
     }
+  }
+
+  renderMarkers() {
+    const markers = [];
+    Object.keys(data).forEach(place => {
+      markers.push((<Marker
+        key={place}
+        name={data[place].name}
+        position={{ lat: Number(data[place].centre.lat), lng: Number(data[place].centre.lng), }}
+        onClick={() => { this.props.changeVideo(place); }}
+      />));
+    });
+    return markers;
   }
 
   render() {
@@ -249,11 +264,6 @@ class MapComponent extends PureComponent {
           ]}
         >
           <Marker
-            name={'First Park'}
-            position={{ lat: 45.549036, lng: -73.616488, }}
-            onClick={() => { this.props.changeVideo('hua'); }}
-          />
-          <Marker
             name={'Your position'}
             position={{ lat: this.props.lat, lng: this.props.lng, }}
             icon={{
@@ -262,6 +272,7 @@ class MapComponent extends PureComponent {
               scaledSize: google ? new google.maps.Size(32, 32) : null
             }}
           />
+          {this.renderMarkers()}
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
