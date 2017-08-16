@@ -6,13 +6,36 @@ import './LangSwitcher.css';
 class LangSwitcher extends React.Component {
   constructor(props) {
     super(props);
+    this.setLang = this.setLang.bind(this);
     this.switchLang = this.switchLang.bind(this);
+  }
+
+  componentDidMount() {
+    const lang = localStorage.getItem('lang');
+    if (lang) {
+      console.log('found lang ' + lang);
+      this.setLang(lang);
+    } else {
+      const userLang = navigator.language || navigator.userLanguage;
+      if (userLang && (userLang.slice(0, 2) === 'fr')) {
+        this.setLang('fr');
+      } else {
+        this.setLang('en');
+      }
+    }
+  }
+
+  setLang(lang) {
+    const page = (this.props.page === 'home') ? '' : this.props.page;
+    const langpath = (lang === 'fr') ? '/fr/' : '/';
+    this.props.router.push(`${langpath}${page}`);
   }
 
   switchLang(lang) {
     const page = (this.props.page === 'home') ? '' : this.props.page;
-    const langpath = (this.props.language === 'en') ? '/fr/' : '/';
+    const langpath = (lang === 'fr') ? '/fr/' : '/';
     this.props.router.push(`${langpath}${page}`);
+    localStorage.setItem('lang', lang);
   }
 
   render() {
