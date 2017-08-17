@@ -6,7 +6,7 @@ import '../Block.css';
 
 import data from '../../../places.json';
 
-import { changeVideo } from '../../../redux/modules/video';
+import { openPanel } from '../../../redux/modules/video';
 import { changePage } from '../../../redux/modules/routing';
 
 class Block extends Component {
@@ -36,7 +36,7 @@ class Block extends Component {
         (lng < Number(data[place].bounds.east)) &&
         (lng > Number(data[place].bounds.west))
       ) {
-        this.props.changeVideo(data[place].video);
+        // this.props.openPanel(place);
       }
     });
   }
@@ -106,4 +106,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { changePage, changeVideo, })(withRouter(Block));
+export default connect(mapStateToProps, { changePage, openPanel, })(withRouter(Block));

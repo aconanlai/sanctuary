@@ -6,6 +6,7 @@ import {
   IndexRoute,
   Route
 } from 'react-router';
+import throttle from 'lodash/throttle';
 import { Provider } from 'react-redux';
 import createStore from './redux/create';
 
@@ -15,7 +16,19 @@ import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
-const store = createStore();
+import { saveState, loadState } from './redux/saveState';
+
+const persistedState = loadState();
+
+const store = createStore(
+  persistedState,
+);
+
+store.subscribe(throttle(() => {
+  saveState({
+    _cart: store.getState()._map,
+  });
+}), 1000);
 
 ReactDOM.render(
   <Provider store={store}>

@@ -11,6 +11,7 @@ import Map from './blocks/Map/Map';
 import Stories from './blocks/Stories/Stories';
 import Artist from './blocks/Artist/Artist';
 import Credits from './blocks/Credits/Credits';
+import Panel from './Panel/Panel';
 import Video from './Video/Video';
 
 import './App.css';
@@ -62,6 +63,7 @@ class App extends React.Component {
         >
           <Credits />
         </Block>
+        <Panel />
         <Video />
       </div>
     );

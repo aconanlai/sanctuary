@@ -12,6 +12,7 @@
       "east": "-73.615249"
     },
     "video": "https://www.youtube.com/watch?v=97oN_DfkJoY",
+    "description": "this is parc normanville",
     "lastVisited": "1502186400"
   },
   "parcPetitItalie": {
@@ -27,6 +28,7 @@
       "east": "-73.611636"
     },
     "video": "https://www.youtube.com/watch?v=84pg8HOPTFk",
+    "description": "this is parc petit italie",
     "lastVisited": "1502186400"
   },
   "testLocation": {
@@ -42,6 +44,7 @@
       "east": "-73.616748"
     },
     "video": "https://www.youtube.com/watch?v=84pg8HOPTFk",
+    "description": "this is the test location",
     "lastVisited": "1502186400"
   }
 }

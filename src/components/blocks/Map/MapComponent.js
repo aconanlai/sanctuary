@@ -9,7 +9,7 @@ import './Map.css';
 import data from '../../../places.json';
 import YouAreHere from './youarehere.png';
 
-import { changeVideo } from '../../../redux/modules/video';
+import { openPanel } from '../../../redux/modules/video';
 
 class MapComponent extends PureComponent {
   constructor(props) {
@@ -69,7 +69,7 @@ class MapComponent extends PureComponent {
         key={place}
         name={data[place].name}
         position={{ lat: Number(data[place].centre.lat), lng: Number(data[place].centre.lng), }}
-        onClick={() => { this.props.changeVideo(place); }}
+        onClick={() => { this.props.openPanel(place); }}
       />));
     });
     return markers;
@@ -300,4 +300,4 @@ const mapStateToProps = (state) => {
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyC1_tz3QGGKPq6iinGN4h-FqPrLOhTlgVI',
-})(connect(mapStateToProps, { changeVideo })(MapComponent));
+})(connect(mapStateToProps, { openPanel })(MapComponent));

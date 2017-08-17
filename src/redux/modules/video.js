@@ -1,8 +1,9 @@
 export default function reducer(state = {
+  panel: '',
   video: '',
 }, action = {}) {
   switch (action.type) {
-    case 'CHANGE_VIDEO':
+    case 'OPEN_VIDEO':
       return {
         ...state,
         video: action.video,
@@ -12,14 +13,24 @@ export default function reducer(state = {
         ...state,
         video: '',
       };
+    case 'OPEN_PANEL':
+      return {
+        ...state,
+        panel: action.panel,
+      };
+    case 'CLOSE_PANEL':
+      return {
+        ...state,
+        panel: '',
+      };
     default:
       return state;
   }
 }
 
-export const changeVideo = (video) => {
+export const openVideo = (video) => {
   return {
-    type: 'CHANGE_VIDEO',
+    type: 'OPEN_VIDEO',
     video,
   };
 };
@@ -27,5 +38,18 @@ export const changeVideo = (video) => {
 export const closeVideo = () => {
   return {
     type: 'CLOSE_VIDEO',
+  };
+};
+
+export const openPanel = (panel) => {
+  return {
+    type: 'OPEN_PANEL',
+    panel,
+  };
+};
+
+export const closePanel = () => {
+  return {
+    type: 'CLOSE_PANEL',
   };
 };

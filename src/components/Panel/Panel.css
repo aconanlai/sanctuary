@@ -1,0 +1,27 @@
+.panel {
+  position: fixed;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  height: 50vh;
+  width: 50vw;
+  z-index: 99;
+  background: lightgray;
+  padding: 2em;
+}
+
+.panel.hide {
+  display: none;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 12px;
+  font-size: 6em;
+  color: white;
+  z-index: 100;
+}

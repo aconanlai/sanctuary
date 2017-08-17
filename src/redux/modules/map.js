@@ -9,6 +9,15 @@ export default function reducer(state = {}, action = {}) {
           lastVisited: (new Date()).getTime(),
         },
       };
+    case 'OPEN_PANEL':
+      return {
+        ...state,
+        [action.panel]: {
+          ...state[action.panel],
+          visited: true,
+          lastVisited: (new Date()).getTime(),
+        },
+      };
     default:
       return state;
   }
