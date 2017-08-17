@@ -9,7 +9,7 @@
       "north": "45.546137",
       "south": "45.545415",
       "west": "-73.616332",
-      "east": "-73.615249)"
+      "east": "-73.615249"
     },
     "video": "https://www.youtube.com/watch?v=97oN_DfkJoY",
     "lastVisited": "1502186400"
@@ -24,7 +24,22 @@
       "north": "45.531687",
       "south": "45.531112",
       "west": "-73.612371",
-      "east": "-73.611636)"
+      "east": "-73.611636"
+    },
+    "video": "https://www.youtube.com/watch?v=84pg8HOPTFk",
+    "lastVisited": "1502186400"
+  },
+  "testLocation": {
+    "name": "Test",
+    "centre" : {
+      "lat": "45.548167",
+      "lng": "-73.617462"
+    },
+    "bounds": {
+      "north": "45.548584",
+      "south": "45.547663",
+      "west": "-73.618148",
+      "east": "-73.616748"
     },
     "video": "https://www.youtube.com/watch?v=84pg8HOPTFk",
     "lastVisited": "1502186400"

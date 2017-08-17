@@ -26,12 +26,15 @@ class Block extends Component {
 
   checkBounds(lat, lng) {
     console.log('checking bounds');
+    console.log(lat, lng);
     Object.keys(data).forEach(place => {
+      console.log(data[place]);
+      console.log(Number(data[place].bounds.north));
       if (
         (lat < Number(data[place].bounds.north)) &&
         (lat > Number(data[place].bounds.south)) &&
-        (lng > Number(data[place].bounds.east)) &&
-        (lng < Number(data[place].bounds.west))
+        (lng < Number(data[place].bounds.east)) &&
+        (lng > Number(data[place].bounds.west))
       ) {
         this.props.changeVideo(data[place].video);
       }
@@ -76,7 +79,7 @@ class Block extends Component {
       lat: position.coords.latitude,
       lng: position.coords.longitude,
     });
-    this.checkBounds(position.coords.latitude, position.coords.longitudetude);
+    this.checkBounds(position.coords.latitude, position.coords.longitude);
   }
 
   render() {
