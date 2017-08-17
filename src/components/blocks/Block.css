@@ -1,7 +1,7 @@
 .block {
-  height: 150vh;
+  min-height: 150vh;
 }
 
 .innerBlock {
-  height: 75%;
+  min-height: 75%;
 }

@@ -2,3 +2,41 @@
   height: 100%;
   padding: 2em;
 }
+
+.storiesList {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.story {
+  margin: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+.storySquare {
+  height: 200px;
+  width: 250px;
+  background: black;
+}
+
+.lineBreak {
+  width: 100%;
+}
+
+.storyName {
+  margin: 1em auto;
+}
+
+@media only screen 
+  and (max-device-width: 750px)
+  and (orientation: portrait) {
+    .storiesList {
+      flex-direction: column;
+    }
+    .lineBreak {
+      width: 0%;
+    }
+}
