@@ -25,6 +25,7 @@ class Block extends Component {
   }
 
   checkBounds(lat, lng) {
+    console.log('checking bounds');
     Object.keys(data).forEach(place => {
       if (
         (lat < Number(data[place].bounds.north)) &&
@@ -41,12 +42,19 @@ class Block extends Component {
     const langpath = (this.props.language === 'en') ? '/' : '/fr/';
     this.props.changePage(this.props.page);
     this.props.router.push(`${langpath}${this.props.page}`);
-    setInterval(this.findLocation, 2000);
+    this.findLocation();
   }
 
   findLocation() {
+    console.log('finding location');
     if (navigator && navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.successLocation, this.errorLocation);
+      setInterval(() => {
+        this.watchPositionId = navigator.geolocation.getCurrentPosition(this.successLocation, this.errorLocation, {
+          enableHighAccuracy: true,
+          maximumAge: 3000,
+          timeout: 3000,
+        });
+      }, 3000);
     } else {
       this.setState({
         error: 'Geolocation is not supported',
@@ -55,18 +63,20 @@ class Block extends Component {
   }
 
   errorLocation(e) {
+    console.log('error');
+    console.log(e);
     this.setState({
       error: e,
     });
   }
 
   successLocation(position) {
-    const { latitude, longitude, } = position.coords;
+    console.log('found location');
     this.setState({
-      lat: latitude,
-      lng: longitude,
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
     });
-    this.checkBounds(latitude, longitude);
+    this.checkBounds(position.coords.latitude, position.coords.longitudetude);
   }
 
   render() {
