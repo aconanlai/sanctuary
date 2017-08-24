@@ -9,6 +9,9 @@ const handleClick = page => {
   const element = document.getElementById(page);
   scrollIntoView(element, {
     time: 500,
+    align: {
+      top: 0,
+    },
   });
 };
 

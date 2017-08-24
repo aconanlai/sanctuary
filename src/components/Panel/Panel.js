@@ -7,27 +7,39 @@ import data from '../../places.json';
 
 import { openVideo, openPanel, closePanel } from '../../redux/modules/video';
 
+const PanelContent = props => {
+  const { name, video, description, image } = props;
+  return (<div className="panel">
+    <div className="panelWrapper">
+      <div className="panelInfo">
+        <div className="panelName">{name}</div>
+        <div className="panelDesc">{description}</div>
+        <button
+          className="panelButton"
+          onClick={() => props.openVideo(props.panel)}
+        >
+          Play Video
+        </button>
+      </div>
+      <div className="panelImage">
+        <img alt={name} src={image} />
+      </div>
+    </div>
+    <a
+      className="closePanel"
+      onClick={(e) => {
+        e.preventDefault();
+        props.closePanel();
+      }}
+      role="button"
+      tabIndex={-1}
+    >X</a>
+  </div>);
+};
+
 const Panel = props => {
   if (props.panel && data[props.panel]) {
-    const { name, video, description } = data[props.panel];
-    return (<div className="panel">
-      <div>{name}</div>
-      <div>{description}</div>
-      <button
-        onClick={() => props.openVideo(props.panel)}
-      >
-        Play Video
-      </button>
-      <a
-        className="close"
-        onClick={(e) => {
-          e.preventDefault();
-          props.closePanel();
-        }}
-        role="button"
-        tabIndex={-1}
-      >X</a>
-    </div>);
+    return <PanelContent {...data[props.panel]} {...props} />;
   }
   return null;
 };

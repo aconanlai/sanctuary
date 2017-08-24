@@ -24,6 +24,9 @@ class App extends React.Component {
       const element = document.getElementById(route);
       scrollIntoView(element, {
         time: 0,
+        align: {
+          top: 0,
+        },
       });
     }
   }

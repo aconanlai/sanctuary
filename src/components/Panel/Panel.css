@@ -5,10 +5,10 @@
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  height: 50vh;
-  width: 50vw;
+  height: 70vh;
+  width: 70vw;
   z-index: 99;
-  background: lightgray;
+  background: #ff5050;
   padding: 2em;
 }
 
@@ -16,12 +16,87 @@
   display: none;
 }
 
-.close {
+.closePanel {
   position: absolute;
   top: 0;
   right: 0;
   margin: 12px;
-  font-size: 6em;
+  font-size: 3em;
   color: white;
   z-index: 100;
+}
+
+.panelWrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.panelInfo {
+  padding: 10px;
+}
+
+.panelName {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.panelDesc {
+  margin-bottom: 20px;
+}
+
+.panelButton {
+  box-shadow: rgb(255, 255, 255) 0px 1px 0px 0px inset;
+  background: linear-gradient(rgb(255, 255, 255) 5%, rgb(246, 246, 246) 100%) rgb(255, 255, 255);
+  border: 3px solid rgb(220, 220, 220);
+  display: inline-block;
+  cursor: pointer;
+  color: rgb(102, 102, 102);
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: rgb(255, 255, 255) 0px 1px 0px;
+}
+
+.panelImage {
+  padding: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*
+  MOBILE STARTS HERE
+*/
+
+@media only screen 
+  and (max-device-width: 750px) {
+    .panel {
+      position: fixed;
+      margin: 0;
+      top: 0;
+      left: 0;
+      margin: 0;
+      transform: translate(0%, 0%);
+      height: 100vh;
+      width: 100vw;
+      z-index: 99;
+      background: lightgray;
+      padding: 2em;
+    }
+}
+
+@media only screen 
+  and (max-device-width: 750px)
+  and (orientation: portrait) {
+
+    .panelWrapper {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
 }

@@ -80,6 +80,7 @@ class MapComponent extends PureComponent {
     return (
       <div id="map">
         <Map
+          onMouseOver={() => console.log('hua')}
           google={this.props.google}
           style={{ width: '100%', height: '100%', position: 'relative' }}
           className={'map'}
@@ -104,7 +105,7 @@ class MapComponent extends PureComponent {
               'elementType': 'geometry',
               'stylers': [
                 {
-                  'color': '#f5f5f5'
+                  'color': '#f7cdab'
                 },
                 {
                   'lightness': 20
@@ -116,7 +117,7 @@ class MapComponent extends PureComponent {
               'elementType': 'geometry.fill',
               'stylers': [
                 {
-                  'color': '#ffffff'
+                  'color': '#de9d8e'
                 },
                 {
                   'lightness': 17
@@ -143,7 +144,7 @@ class MapComponent extends PureComponent {
               'elementType': 'geometry',
               'stylers': [
                 {
-                  'color': '#ffffff'
+                  'color': '#de9d8e'
                 },
                 {
                   'lightness': 18
@@ -155,7 +156,7 @@ class MapComponent extends PureComponent {
               'elementType': 'geometry',
               'stylers': [
                 {
-                  'color': '#ffffff'
+                  'color': '#de9d8e'
                 },
                 {
                   'lightness': 16
@@ -179,7 +180,7 @@ class MapComponent extends PureComponent {
               'elementType': 'geometry',
               'stylers': [
                 {
-                  'color': '#dedede'
+                  'color': '#c7b752'
                 },
                 {
                   'lightness': 21
@@ -239,7 +240,7 @@ class MapComponent extends PureComponent {
               'elementType': 'geometry.fill',
               'stylers': [
                 {
-                  'color': '#fefefe'
+                  'color': '#9e9e9e'
                 },
                 {
                   'lightness': 20
@@ -251,7 +252,7 @@ class MapComponent extends PureComponent {
               'elementType': 'geometry.stroke',
               'stylers': [
                 {
-                  'color': '#fefefe'
+                  'color': '#9e9e9e'
                 },
                 {
                   'lightness': 17
