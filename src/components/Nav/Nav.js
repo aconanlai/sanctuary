@@ -11,6 +11,7 @@ const handleClick = page => {
     time: 500,
     align: {
       top: 0,
+      topOffset: 30,
     },
   });
 };

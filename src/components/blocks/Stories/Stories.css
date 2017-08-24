@@ -16,8 +16,8 @@
   flex-direction: column;
 }
 
-.storySquare {
-  height: 200px;
+.storyImage {
+  height: 250px;
   width: 250px;
   background: black;
 }
@@ -36,7 +36,14 @@
     .storiesList {
       flex-direction: column;
     }
+
     .lineBreak {
       width: 0%;
+    }
+
+    .storyImage {
+      height: 80%;
+      width: 80%;
+      background: black;
     }
 }

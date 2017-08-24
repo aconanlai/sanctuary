@@ -26,6 +26,7 @@ class App extends React.Component {
         time: 0,
         align: {
           top: 0,
+          topOffset: 30,
         },
       });
     }

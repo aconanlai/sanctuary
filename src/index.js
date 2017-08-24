@@ -26,7 +26,7 @@ const store = createStore(
 
 store.subscribe(throttle(() => {
   saveState({
-    _cart: store.getState()._map,
+    _map: store.getState()._map,
   });
 }), 1000);
 

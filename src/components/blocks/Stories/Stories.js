@@ -1,31 +1,27 @@
 import React from 'react';
 import './Stories.css';
 
+import data from '../../../places.json';
+
+const Story = props => (
+  <div className="story">
+    <img
+      className="storyImage"
+      alt={props.name}
+      src={props.image}
+    />
+    <span className="storyName">{props.name}</span>
+  </div>
+);
+
 const Stories = () => (
   <div id="stories">
     <h1>Stories</h1>
     <div className="storiesList">
-      <div className="story">
-        <div className="storySquare" />
-        <span className="storyName">Story 1</span>
-      </div>
-      <div className="story">
-        <div className="storySquare" />
-        <span className="storyName">Story 2</span>
-      </div>
-      <div className="story">
-        <div className="storySquare" />
-        <span className="storyName">Story 3</span>
-      </div>
-      <div className="lineBreak" />
-      <div className="story">
-        <div className="storySquare" />
-        <span className="storyName">Story 4</span>
-      </div>
-      <div className="story">
-        <div className="storySquare" />
-        <span className="storyName">Story 5</span>
-      </div>
+      {Object.keys(data).forEach(story => {
+        console.log(story);
+        return <Story {...data[story]} />;
+      })}
     </div>
   </div>
 );
