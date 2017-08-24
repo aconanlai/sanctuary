@@ -25,11 +25,11 @@ class Block extends Component {
   }
 
   checkBounds(lat, lng) {
-    console.log('checking bounds');
+    // console.log('checking bounds');
     console.log(lat, lng);
     Object.keys(data).forEach(place => {
-      console.log(data[place]);
-      console.log(Number(data[place].bounds.north));
+      // console.log(data[place]);
+      // console.log(Number(data[place].bounds.north));
       if (
         (lat < Number(data[place].bounds.north)) &&
         (lat > Number(data[place].bounds.south)) &&

@@ -18,8 +18,7 @@ const Stories = () => (
   <div id="stories">
     <h1>Stories</h1>
     <div className="storiesList">
-      {Object.keys(data).forEach(story => {
-        console.log(story);
+      {Object.keys(data).map(story => {
         return <Story {...data[story]} />;
       })}
     </div>

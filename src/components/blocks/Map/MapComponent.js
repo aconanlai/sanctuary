@@ -80,7 +80,6 @@ class MapComponent extends PureComponent {
     return (
       <div id="map">
         <Map
-          onMouseOver={() => console.log('hua')}
           google={this.props.google}
           style={{ width: '100%', height: '100%', position: 'relative' }}
           className={'map'}
