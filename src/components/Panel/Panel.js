@@ -16,7 +16,11 @@ const PanelContent = props => {
         <div className="panelDesc">{description}</div>
         <button
           className="panelButton"
-          onClick={() => props.openVideo(props.panel)}
+          onClick={() => {
+            props.closePanel();
+            props.openVideo(props.panel);
+          }
+          }
         >
           Play Video
         </button>

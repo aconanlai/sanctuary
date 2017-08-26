@@ -66,5 +66,22 @@
     "description": "For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.",
     "lastVisited": "1502186400",
     "image": "https://unsplash.it/300/300"
+  },
+  "lana": {
+    "name": "Cafe Lana",
+    "centre" : {
+      "lat": "45.540630",
+      "lng": "-73.613127"
+    },
+    "bounds": {
+      "north": "45.540795",
+      "south": "45.540435",
+      "west": "-73.613315",
+      "east": "-73.612950"
+    },
+    "video": "https://www.youtube.com/watch?v=84pg8HOPTFk",
+    "description": "This is the Lana cafe",
+    "lastVisited": "1502186400",
+    "image": "https://unsplash.it/300/300"
   }
 }

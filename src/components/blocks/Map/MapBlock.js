@@ -36,7 +36,8 @@ class Block extends Component {
         (lng < Number(data[place].bounds.east)) &&
         (lng > Number(data[place].bounds.west))
       ) {
-        // this.props.openPanel(place);
+        console.log('we are at a spot');
+        this.props.openPanel(place);
       }
     });
   }
