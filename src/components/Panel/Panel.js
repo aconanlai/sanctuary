@@ -27,7 +27,10 @@ const PanelContent = props => {
         </button>
       </div>
       <div className="panelImage">
-        <img alt={name} src={image} />
+        <img
+          alt={name}
+          src={image}
+        />
       </div>
     </div>
     <a

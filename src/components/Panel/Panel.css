@@ -72,6 +72,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-self: center;
 }
 
 .growing-panel {
@@ -101,13 +102,12 @@
   transition: all 200ms ease-in-out;
 }
 
-
 /*
   MOBILE STARTS HERE
 */
 
 @media only screen 
-  and (max-device-width: 750px) {
+  and (max-width: 750px) {
     .panel {
       position: fixed;
       margin: 0;
@@ -115,22 +115,77 @@
       left: 0;
       margin: 0;
       transform: translate(0%, 0%);
-      height: 100vh;
-      width: 100vw;
+      height: 100%;
+      width: 100%;
       z-index: 99;
-      background: lightgray;
       padding: 2em;
+    }
+
+    .growing-enter {
+      transform: scale(0.7) translate(0%, 0%);
+      opacity: 0;
+    }
+
+    .growing-enter.growing-enter-active {
+      transform: scale(1) translate(0%, 0%);
+      opacity: 1;
+      transition: all 200ms ease-in-out;
+    }
+
+    .growing-leave {
+      transform: scale(1) translate(0%, 0%);
+      opacity: 1;
+    }
+
+    .growing-leave.growing-leave-active {
+      transform: scale(0.7) translate(0%, 0%);
+      opacity: 0;
+      transition: all 200ms ease-in-out;
     }
 }
 
 @media only screen 
-  and (max-device-width: 750px)
-  and (orientation: portrait) {
+  and (max-width: 750px)
+  and (min-aspect-ratio: 1/5)
+  and (max-aspect-ratio: 5/5) {
 
     .panelWrapper {
       display: flex;
       flex-direction: column;
       height: 100%;
       width: 100%;
+    }
+
+    .panelInfo {
+      z-index: 101;
+    }
+
+    .panelImage img {
+      z-index: 100;
+      opacity: 0.3;
+      position: fixed;
+      top: 0;
+      left: -25%;
+      height: 120vh;
+      width: 120vh;
+    }
+}
+
+@media only screen 
+  and (max-width: 750px)
+  and (min-aspect-ratio: 5/5) {
+
+    .panelInfo {
+      z-index: 101;
+    }
+
+    .panelImage img {
+      z-index: 100;
+      opacity: 0.3;
+      position: fixed;
+      top: -25%;
+      left: 0%;
+      height: 120vw;
+      width: 120vw;
     }
 }
