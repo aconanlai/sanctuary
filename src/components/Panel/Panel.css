@@ -1,3 +1,9 @@
+.panelOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .panel {
   position: fixed;
   margin: 0;
@@ -67,6 +73,31 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.sliding-panel {
+  position: relative;
+  display: inline-block;
+ }
+
+.sliding-enter {
+  transform: translate(200%, -50%);
+}
+
+.sliding-enter.sliding-enter-active {
+  transform: translate(-50%, -50%);
+  transition: transform 300ms ease-in-out;
+}
+
+.sliding-leave {
+  transform: translate(-50%, -50%);
+  position: fixed;
+}
+
+.sliding-leave.sliding-leave-active {
+  transform: translate(-200%, -50%);
+  transition: transform 300ms ease-in-out;
+}
+
 
 /*
   MOBILE STARTS HERE

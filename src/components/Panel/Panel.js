@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 import './Panel.css';
 
@@ -42,10 +43,21 @@ const PanelContent = props => {
 };
 
 const Panel = props => {
-  if (props.panel && data[props.panel]) {
-    return <PanelContent {...data[props.panel]} {...props} />;
-  }
-  return null;
+  const content = (props.panel && data[props.panel]) ? <PanelContent key="panel" {...data[props.panel]} {...props} /> : null;
+  return (
+    <div className="">
+      <CSSTransitionGroup
+        transitionName="sliding"
+        transitionEnterTimeout={300}
+        transitionLeaveTimeout={300}
+        transitionAppear
+        transitionAppearTimeout={300}
+        className="sliding-panel"
+      >
+        {content}
+      </CSSTransitionGroup>
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => {
