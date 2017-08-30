@@ -47,12 +47,12 @@ const Panel = props => {
   return (
     <div className="">
       <CSSTransitionGroup
-        transitionName="sliding"
+        transitionName="growing"
         transitionEnterTimeout={300}
         transitionLeaveTimeout={300}
         transitionAppear
         transitionAppearTimeout={300}
-        className="sliding-panel"
+        className="growing-panel"
       >
         {content}
       </CSSTransitionGroup>
