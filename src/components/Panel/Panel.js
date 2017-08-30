@@ -4,7 +4,7 @@ import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 import './Panel.css';
 
-import data from '../../places.json';
+import data from '../../places';
 
 import { openVideo, openPanel, closePanel } from '../../redux/modules/video';
 

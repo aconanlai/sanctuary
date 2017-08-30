@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import Waypoint from 'react-waypoint';
 import '../Block.css';
 
-import data from '../../../places.json';
+import data from '../../../places.js';
 
 import { openPanel } from '../../../redux/modules/video';
 import { changePage } from '../../../redux/modules/routing';

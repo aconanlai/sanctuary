@@ -17,6 +17,10 @@
   align-items: center;
 }
 
+.story:hover {
+  cursor: pointer;
+}
+
 .storyImage {
   height: 250px;
   width: 250px;

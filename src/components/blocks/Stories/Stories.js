@@ -1,10 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './Stories.css';
 
-import data from '../../../places.json';
+import data from '../../../places';
+
+import { openVideo } from '../../../redux/modules/video';
+
 
 const Story = props => (
-  <div className="story">
+  <div
+    className="story"
+    onClick={() => props.openVideo(props.id)}
+  >
     <img
       className="storyImage"
       alt={props.name}
@@ -14,15 +21,15 @@ const Story = props => (
   </div>
 );
 
-const Stories = () => (
+const Stories = (props) => (
   <div id="stories">
     <h1>Stories</h1>
     <div className="storiesList">
       {Object.keys(data).map(story => {
-        return <Story {...data[story]} />;
+        return <Story openVideo={props.openVideo} {...data[story]} />;
       })}
     </div>
   </div>
 );
 
-export default Stories;
+export default connect(null, { openVideo, })(Stories);

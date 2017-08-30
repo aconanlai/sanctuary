@@ -1,4 +1,4 @@
-import data from '../places.json';
+import data from '../places.js';
 
 export const loadState = () => {
   console.log('loading state');

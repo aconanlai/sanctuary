@@ -6,7 +6,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
 import './Map.css';
-import data from '../../../places.json';
+import data from '../../../places.js';
 import YouAreHere from './youarehere.png';
 
 import { openPanel } from '../../../redux/modules/video';
