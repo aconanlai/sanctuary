@@ -1,7 +1,10 @@
 .block {
-  min-height: 150vh;
+  min-height: 115vh;
 }
 
 .innerBlock {
-  min-height: 125vh;
+  min-height: 110vh;
+  margin: 2em auto;
+  max-width: 1100px;
+  position: relative;
 }

@@ -11,7 +11,7 @@ const handleClick = page => {
     time: 500,
     align: {
       top: 0,
-      topOffset: page === 'map' ? 0 : 30,
+      topOffset: (window.innerWidth > 750 || page === 'map') ? 0 : 30,
     },
   });
 };

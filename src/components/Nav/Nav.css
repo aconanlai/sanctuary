@@ -21,7 +21,7 @@
 }
 
 @media only screen 
-  and (max-device-width: 750px) {
+  and (max-width: 750px) {
     .nav {
       padding: 1em;
       width: 100%;
