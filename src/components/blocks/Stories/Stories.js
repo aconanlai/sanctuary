@@ -11,6 +11,8 @@ const Story = props => (
   <div
     className="story"
     onClick={() => props.openVideo(props.id)}
+    role="link"
+    tabIndex="0"
   >
     <img
       className="storyImage"

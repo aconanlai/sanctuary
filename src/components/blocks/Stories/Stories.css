@@ -27,12 +27,23 @@
   background: black;
 }
 
+.storyImage:hover {
+  box-shadow: 5px 5px 0px 2px black;
+}
+
 .lineBreak {
   width: 100%;
 }
 
 .storyName {
   margin: 1em auto;
+  text-decoration: underline;
+  font-weight: 600;
+  color: #1a0000;
+}
+
+.storyName:hover {
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 @media only screen 
@@ -46,9 +57,17 @@
       width: 0%;
     }
 
+    .story {
+      margin: 2em 0;
+    }
+
     .storyImage {
-      height: 80%;
-      width: 80%;
+      height: auto;
+      width: 80vw;
       background: black;
+    }
+
+    .storyName {
+      font-size: 1.3em;
     }
 }

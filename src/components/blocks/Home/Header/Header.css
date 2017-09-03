@@ -1,4 +1,26 @@
 .header {
-  margin-top: 3em;
-  height: 70%;
+  margin-top: 2em;
+  max-width: 600px;
+  width: 100%;
+}
+
+.headerImage {
+  width: 100%;
+}
+
+@media only screen and
+  (max-width: 750px) and
+  (orientation: landscape) {
+
+    .header {
+      margin-top: 0em;
+      height: 100%;
+      width: auto;
+    }
+
+    .headerImage {
+      width: auto;
+      height: 100%;
+    }
+
 }

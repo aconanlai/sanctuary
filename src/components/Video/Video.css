@@ -21,7 +21,8 @@
   top: 0;
   right: 0;
   margin: 12px;
-  font-size: 6em;
-  color: white;
+  font-size: 3em;
+  color: black;
+  background: white;
   z-index: 102;
 }

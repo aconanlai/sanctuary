@@ -13,7 +13,17 @@
 }
 
 .navItem {
+  margin: 1em;
   text-transform: uppercase;
+}
+
+.navItem:before {
+  content: "⁍ ";
+}
+
+.navItem:hover {
+  cursor: pointer;
+  text-decoration: line-through;
 }
 
 .navItem.selected {
@@ -33,5 +43,18 @@
       padding: 0 0 0 0;
       display: flex;
       justify-content: space-between;
+    }
+
+    .navItem {
+      margin: auto;
+    }
+
+    .navItem:before {
+      content: "";
+    }
+
+    .navItem:hover {
+      cursor: auto;
+      text-decoration: none;
     }
 }
