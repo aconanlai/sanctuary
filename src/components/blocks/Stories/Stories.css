@@ -22,9 +22,11 @@
 }
 
 .storyImage {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
   background: black;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 100ms ease-in;
 }
 
 .storyImage:hover {
@@ -37,9 +39,9 @@
 
 .storyName {
   margin: 1em auto;
-  text-decoration: underline;
+  font-size: 1em;
   font-weight: 600;
-  color: #1a0000;
+  color: #333;
 }
 
 .storyName:hover {
@@ -68,6 +70,6 @@
     }
 
     .storyName {
-      font-size: 1.3em;
+      font-size: 1.2em;
     }
 }

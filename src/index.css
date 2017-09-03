@@ -50,5 +50,17 @@ table {
 * {
   margin: 0;
   box-sizing: border-box;
-  font-family: Tahoma, Verdana, Segoe, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+	font-size: 1.3em;
+	color: #1a1a1a;
+	margin-bottom: 1em;
+}
+
+p {
+	color: #333;
+	font-size: 0.9em;
+	line-height: 1.4em;
 }
