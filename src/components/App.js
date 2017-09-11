@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import scrollIntoView from 'scroll-into-view';
+import throttle from 'lodash/throttle';
 import Nav from './Nav/Nav';
 import LangSwitcher from './LangSwitcher/LangSwitcher';
 import Block from './blocks/Block';
@@ -13,6 +15,8 @@ import Artist from './blocks/Artist/Artist';
 import Credits from './blocks/Credits/Credits';
 import Panel from './Panel/Panel';
 import Video from './Video/Video';
+
+import { scroll } from '../redux/modules/ui';
 
 import './App.css';
 
@@ -30,6 +34,9 @@ class App extends React.Component {
         },
       });
     }
+    window.addEventListener('scroll', throttle(() => {
+      this.props.scroll(document.documentElement.scrollTop || document.body.scrollTop);
+    }, 250));
   }
 
   render() {
@@ -74,4 +81,4 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App);
+export default connect(null, { scroll, })(withRouter(App));

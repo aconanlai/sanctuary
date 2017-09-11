@@ -24,6 +24,7 @@ module.exports = {
     "arrow-parens": 0,
     "arrow-body-style": 0,
     "class-methods-use-this": 0,
+    "no-return-assign": 0,
     "import/no-extraneous-dependencies": [
       "error", {
         "devDependencies": true,

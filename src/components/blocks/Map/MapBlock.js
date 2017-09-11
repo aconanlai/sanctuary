@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import Waypoint from 'react-waypoint';
 import '../Block.css';
 
-import data from '../../../places.js';
+import data from '../../../places';
 
 import { openPanel } from '../../../redux/modules/video';
 import { changePage } from '../../../redux/modules/routing';
@@ -24,9 +23,19 @@ class Block extends Component {
     this.successLocation = this.successLocation.bind(this);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const top = this.ref.getBoundingClientRect().top;
+    const half = window.innerHeight / 2;
+    if ((top < half && top > (0 - half))
+      && (this.props.page !== this.props.selectedPage)) {
+      const langpath = (this.props.language === 'en') ? '/' : '/fr/';
+      this.props.changePage(this.props.page);
+      this.props.router.push((this.props.page === 'home') ? langpath : `${langpath}${this.props.page}`);
+    }
+  }
+
   checkBounds(lat, lng) {
     // console.log('checking bounds');
-    console.log(lat, lng);
     Object.keys(data).forEach(place => {
       // console.log(data[place]);
       // console.log(Number(data[place].bounds.north));
@@ -50,7 +59,6 @@ class Block extends Component {
   }
 
   findLocation() {
-    console.log('finding location');
     if (navigator && navigator.geolocation) {
       setInterval(() => {
         this.watchPositionId = navigator.geolocation.getCurrentPosition(this.successLocation, this.errorLocation, {
@@ -67,15 +75,15 @@ class Block extends Component {
   }
 
   errorLocation(e) {
-    console.log('error');
-    console.log(e);
+    // console.log('error');
+    // console.log(e);
     this.setState({
       error: e,
     });
   }
 
   successLocation(position) {
-    console.log('found location');
+    // console.log('found location');
     this.setState({
       lat: position.coords.latitude,
       lng: position.coords.longitude,
@@ -85,17 +93,13 @@ class Block extends Component {
 
   render() {
     return (
-      <div className="block">
-        <Waypoint
-          onEnter={this.handleEnter}
-        >
-          <div className="innerBlock">
-            {React.cloneElement(this.props.children, {
-              lat: this.state.lat,
-              lng: this.state.lng,
-            })}
-          </div>
-        </Waypoint>
+      <div ref={c => this.ref = c} className="block">
+        <div className="innerBlock">
+          {React.cloneElement(this.props.children, {
+            lat: this.state.lat,
+            lng: this.state.lng,
+          })}
+        </div>
       </div>
     );
   }
@@ -104,6 +108,8 @@ class Block extends Component {
 const mapStateToProps = state => {
   return {
     language: state._language.language,
+    scrollTop: state._ui.scrollTop,
+    selectedPage: state._routing.page,
   };
 };
 

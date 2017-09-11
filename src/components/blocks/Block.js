@@ -1,30 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import Waypoint from 'react-waypoint';
 import './Block.css';
 
 import { changePage } from '../../redux/modules/routing';
 
-const Block = props => (
-  <div className="block">
-    <Waypoint
-      onEnter={() => {
-        const langpath = (props.language === 'en') ? '/' : '/fr/';
-        props.changePage(props.page);
-        props.router.push((props.page === 'home') ? langpath : `${langpath}${props.page}`);
-      }}
-    >
-      <div className="innerBlock">
-        {props.children}
+class Block extends React.PureComponent {
+  componentDidUpdate(prevProps, prevState) {
+    const top = this.ref.getBoundingClientRect().top;
+    const half = window.innerHeight / 2;
+    if ((top < half && top > (0 - half))
+      && (this.props.page !== this.props.selectedPage)) {
+      const langpath = (this.props.language === 'en') ? '/' : '/fr/';
+      this.props.changePage(this.props.page);
+      this.props.router.push((this.props.page === 'home') ? langpath : `${langpath}${this.props.page}`);
+    }
+  }
+
+  render() {
+    return (
+      <div ref={c => this.ref = c} className="innerBlock">
+        {this.props.children}
       </div>
-    </Waypoint>
-  </div>
-);
+    );
+  }
+}
 
 const mapStateToProps = state => {
   return {
     language: state._language.language,
+    scrollTop: state._ui.scrollTop,
+    selectedPage: state._routing.page,
   };
 };
 
