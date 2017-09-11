@@ -33,25 +33,30 @@ const NavItem = props => (
   </li>
 );
 
-const Nav = props => (
-  <div className="nav">
-    <ul className="navList">
-      {items.map(item => {
-        return (
-          <NavItem
-            name={item}
-            selected={props.page}
-            key={item}
-          />
-        );
-      })}
-    </ul>
-  </div>
-);
+class Nav extends React.PureComponent {
+  render() {
+    return (
+      <div className={'nav' + (this.props.selectedPage !== 'home' ? ' top' : '')}>
+        <ul className="navList">
+          {items.map(item => {
+            return (
+              <NavItem
+                name={item}
+                selected={this.props.page}
+                key={item}
+              />
+            );
+          })}
+        </ul>
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
     page: state._routing.page,
+    selectedPage: state._routing.page,
   };
 };
 

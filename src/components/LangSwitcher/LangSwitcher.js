@@ -13,7 +13,6 @@ class LangSwitcher extends React.Component {
   componentDidMount() {
     const lang = localStorage.getItem('lang');
     if (lang) {
-      console.log('found lang ' + lang);
       this.setLang(lang);
     } else {
       const userLang = navigator.language || navigator.userLanguage;
@@ -40,8 +39,8 @@ class LangSwitcher extends React.Component {
 
 
   render() {
-    return (this.props.page === 'home') ? (
-      <div className="langswitcher">
+    return (
+      <div className={'langswitcher' + (this.props.page === 'home' ? '' : ' hide')}>
         <a
           onClick={() => this.switchLang('en')}
           className={(this.props.language === 'en') ? 'selected lang' : 'lang'}
@@ -60,7 +59,7 @@ class LangSwitcher extends React.Component {
           FR
         </a>
       </div>
-    ) : null;
+    );
   }
 }
 

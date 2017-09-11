@@ -37,6 +37,9 @@ class App extends React.Component {
     window.addEventListener('scroll', throttle(() => {
       this.props.scroll(document.documentElement.scrollTop || document.body.scrollTop);
     }, 250));
+    window.addEventListener('resize', throttle(() => {
+      this.props.scroll(document.documentElement.scrollTop || document.body.scrollTop);
+    }, 250));
   }
 
   render() {

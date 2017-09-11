@@ -94,7 +94,7 @@ class Block extends Component {
   render() {
     return (
       <div ref={c => this.ref = c} className="block">
-        <div className="innerBlock">
+        <div className="innerBlock innerMapBlock">
           {React.cloneElement(this.props.children, {
             lat: this.state.lat,
             lng: this.state.lng,
